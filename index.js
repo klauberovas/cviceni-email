@@ -16,10 +16,8 @@
 
 // S pozdravem Pavel Ovesný
 const goodbye = (name) => {
-  const emailClosingElm = document.querySelector('.email__closing');
-  emailClosingElm.textContent = `S pozdravem ${name}`;
+  return `S pozdravem ${name}`;
 };
-goodbye('Petr Novák');
 
 // Do souboru index.js přidejte funkci fillSubject s jedním parametrem subject. Tato funkce ze stránky vybere DOM element představující předmět e-mailu a nastaví jeho obsah na řetězec, který přišel v parametru.
 // Zavolejte funkci na konci souboru index.js a vykoušejte si nastavit předmět e-mailu na nějaký smysluplný text.
@@ -35,7 +33,10 @@ fillSubject('Zájem o pozici Hlavní recepční');
 const fillBody = (body, name) => {
   const emailBodyElm = document.querySelector('.email__body');
   emailBodyElm.innerHTML = `${body}`;
-  emailClosingElm.textContent = `S pozdravem ${goodbye(name)}`;
+
+  const emailClosingElm = document.querySelector('.email__closing');
+  emailClosingElm.textContent = goodbye(name);
+  // emailClosingElm.textContent = `S pozdravem ${goodbye(name)}`;
 };
 fillBody(
   `
@@ -44,5 +45,5 @@ fillBody(
   <p>Absolvovala jsem rekvalifikační kurz Administrativní pracovník, poté jsem v několika firmách vykonávala práci na pozicích asistentka a recepční. Hovořím plynně anglicky, německy a francouzsky, dále brilantně zvládám práci se systémem SAP, který Vaše společnost používá. Mezi mé přednosti patří komunikační a organizační schopnosti, dále pak pečlivost a spolehlivost.</p> 
   
   <p>Více informací o mně naleznete v přiloženém životopisu, případně mě kontaktujte na tomto emailu nebo na níže uvedeném telefonním čísle.</p>`,
-  goodbye('Šárka Klauberová'),
+  'Šárka Klauberová',
 );
